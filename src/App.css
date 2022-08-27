@@ -1,38 +1,64 @@
+@font-face {
+  font-family: 'Comic Neue Bold';
+  src: local('Comic Neue Bold'), url(./assets/ComicNeue-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: local('Comic Neue'), url(./assets/ComicNeue-Regular.ttf) format('truetype');
+}
+
 .App {
+  width: 100%;
+  height: 100%;
+  margin: 0;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: lightpink;
+  background-image: url("./assets/owochat-wallpaper.jpg");
+  bottom: 0%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  font-family: "Comic Neue Bold", monospace;
+  color: rgb(180, 81, 117);
 }
 
-.App-link {
-  color: #61dafb;
+a:hover {
+  color: pink;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.textInput:empty:before {
+  content: attr(placeholder);
+  font-weight: initial;
+  color: rgba(180, 81, 117, 0.5);
+}
+.textInput::-webkit-scrollbar {
+  width: 0px;
+}
+.textInput:focus {
+  outline: none;
+}
+
+
+.chatHistory::-webkit-scrollbar {
+  width: 7px;
+}
+/* Track */
+/* .cleanScrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+} */
+/* Handle */
+.chatHistory::-webkit-scrollbar-thumb {
+  background: lightpink;  
+  border-radius: 5px;
+}
+/* Handle on hover */
+.chatHistory::-webkit-scrollbar-thumb:hover {
+  background: rgb(189, 189, 189); 
+}
+
+
+
+.msgContent, .credits, .textInput  {
+  font-family: "Comic Neue", monospace;
 }
