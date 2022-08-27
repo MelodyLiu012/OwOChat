@@ -1,65 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Message } from './Message'
+import Message from './Message'
+import InputBar from './InputBar'
+
+import { onValue, set } from 'firebase/database'
+import { messagesRef } from '../firebase'
 
 const Chat = () => {
   const [messages, setMessages] = useState([
     {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-    {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-    {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-    {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-    {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-    {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-    {
-      sender: "User #1",
-      content: "This is a placeholder message text."
-    },
-    {
-      sender: "User #2",
-      content: "This is the second placeholder message text."
-    },
-  ])
+      sender: "First Sender",
+      content: "first message."
+    }
+  ]);
 
   const botDivRef = useRef();
   const scrollToBottom = () => {
@@ -69,6 +21,12 @@ const Chat = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // onValue(messagesRef, (snapshot) => {
+  //   const data = snapshot.val();
+  //   setMessages(data);
+  // })
+  
 
   return (
     <div style={{
@@ -103,24 +61,7 @@ const Chat = () => {
         <div ref={botDivRef}></div> {/* dummy div */}
       </div>
       
-      <div 
-        contentEditable={true}
-        className='textInput'
-        placeholder='Swend a messwage uwu'
-        style={{
-          padding: "0.4rem",
-          boxSizing: "border-box",
-          width: "99%",
-          height: "7%",
-          border: "none",
-          borderTop: "2px solid lightpink",
-          textAlign: "left",
-          overflowY: "scroll",
-          scrollbarWidth: "none"
-        }}
-      >
-      </div>
-      
+      <InputBar />
     </div>
   )
 }

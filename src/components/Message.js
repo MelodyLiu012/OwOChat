@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Message = ( {sender, content}) => {
+const Message = ( {sender, content}) => {
   return (
     <div style={{
       display: 'flex',
@@ -18,3 +18,5 @@ export const Message = ( {sender, content}) => {
     </div>
   )
 }
+
+export default Message
