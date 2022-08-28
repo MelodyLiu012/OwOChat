@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Message from './Message'
 import InputBar from './InputBar'
-
-import { onValue, set } from 'firebase/database'
-import { messagesRef } from '../firebase'
+import { useMessages } from '../util/useMessages'
 
 const Chat = () => {
-  const [messages, setMessages] = useState([
-    {
-      sender: "First Sender",
-      content: "first message."
-    }
-  ]);
+  // const [messages, setMessages] = useState([
+  //   {
+  //     sender: "First Sender",
+  //     content: "first message."
+  //   }
+  // ]);
+  const messages = useMessages();
 
   const botDivRef = useRef();
   const scrollToBottom = () => {
@@ -19,13 +18,9 @@ const Chat = () => {
   }
 
   useEffect(() => {
+    console.log("useEffect");
     scrollToBottom();
   }, [messages]);
-
-  // onValue(messagesRef, (snapshot) => {
-  //   const data = snapshot.val();
-  //   setMessages(data);
-  // })
   
 
   return (
@@ -58,7 +53,7 @@ const Chat = () => {
             />
           ))
         }
-        <div ref={botDivRef}></div> {/* dummy div */}
+        <div ref={botDivRef}></div> {/* dummy div for autoscroll to bottom*/}
       </div>
       
       <InputBar />
