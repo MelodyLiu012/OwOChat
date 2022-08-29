@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react'
 import { TbSend } from "react-icons/tb"
 import { writeMessage } from '../firebase'
 import { MdOutlineSettingsSuggest } from 'react-icons/md'
+import owoify from 'owoify-js'
 
-const InputBar = () => {
+const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
   const [hoveringSend, setHoveringSend] = useState(false);
   const [hoveringSet, setHoveringSet] = useState(false);
 
@@ -44,7 +45,7 @@ const InputBar = () => {
         onMouseEnter={() => { setHoveringSet(true); }}
         onMouseLeave={ () => { setHoveringSet(false); } }
         onClick={() => { 
-          // TODO: make uwu setting modal appear
+          setOwoSetVis(!owoSetVis);
         }}
         style={{
           height: "90%",
@@ -66,7 +67,14 @@ const InputBar = () => {
         onMouseLeave={ () => { setHoveringSend(false); } }
         onClick={() => { 
           if (inputRef.current.innerText != "") {
-            writeMessage("Test User", inputRef.current.innerText); 
+            let owoifyParam = "owo";
+            if (owoLevel == 0) { owoifyParam = "owo";}
+            if (owoLevel == 10) { owoifyParam = "uwu"; }
+            if (owoLevel == 20) { owoifyParam = "uvu"; }
+            console.log(owoifyParam);
+            const owoifiedText = owoify(inputRef.current.innerText, owoifyParam);
+
+            writeMessage(username, owoifiedText); 
             inputRef.current.innerText = "";
           }
         }}

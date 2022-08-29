@@ -3,13 +3,8 @@ import Message from './Message'
 import InputBar from './InputBar'
 import { useMessages } from '../util/useMessages'
 
-const Chat = () => {
-  // const [messages, setMessages] = useState([
-  //   {
-  //     sender: "First Sender",
-  //     content: "first message."
-  //   }
-  // ]);
+const Chat = ( {username, owoSetVis, owoLevel, setOwoSetVis} ) => {
+
   const messages = useMessages();
 
   const botDivRef = useRef();
@@ -18,7 +13,6 @@ const Chat = () => {
   }
 
   useEffect(() => {
-    console.log("useEffect");
     scrollToBottom();
   }, [messages]);
   
@@ -45,6 +39,7 @@ const Chat = () => {
         boxSizing: "border-box",
         overflowY: "scroll",
       }}>
+
         {
           messages.map((message, i) => (
             <Message 
@@ -56,7 +51,7 @@ const Chat = () => {
         <div ref={botDivRef}></div> {/* dummy div for autoscroll to bottom*/}
       </div>
       
-      <InputBar />
+      <InputBar username={username} owoSetVis={owoSetVis} setOwoSetVis={setOwoSetVis} owoLevel={owoLevel}/>
     </div>
   )
 }
