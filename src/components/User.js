@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
+import { set } from 'firebase/database';
+import React, { useRef, useState } from 'react'
 import { MdEdit } from "react-icons/md"
 import { TbHelp } from 'react-icons/tb'
+import HelpModal from './HelpModal';
 
-const User = ( {username} ) => {
+const User = ( {
+  username, 
+  setUsername, 
+  owoCount,
+  setOwoCount,
+  uwuCount,
+  setUwuCount
+} ) => {
+
   const [editMode, setEditMode] = useState(false);
+  const [editHover, setEditHover] = useState(false);
+  const [helpHover, setHelpHover] = useState(false);
+
+  const nameRef = useRef();
 
   return (
     <div style={{
@@ -30,28 +44,59 @@ const User = ( {username} ) => {
         <tr>
           <td style={{width: "6rem"}}>[Nickname]</td> 
           <td 
+            ref={nameRef}
             contentEditable={editMode}
             className="aboutData"
             style={{
               borderBottom: editMode ? "1px solid rgba(180, 81, 117, 0.5)" : "none",
             }}
+            // onChange={() => {setUsername(nameRef.current.clientText)}}
           >
             {username}
           </td>
           <td>
             <MdEdit 
-              onClick={() => { setEditMode(!editMode) }}
+              style={{
+                cursor: "pointer",
+                width: "1.1rem",
+                height: "1.1rem",
+                padding: "0.1rem",
+                borderRadius: "1.05rem",
+                cursor: editHover ? "pointer" : "default",
+                background: editHover ? "rgba(255, 182, 193, 0.5)" : "none",
+              }}
+              onClick={() => { 
+                setEditMode(!editMode); // state changes are made asynchronously, so on clicking to turn
+                if (editMode) {         // off edit mode, editMode=true still. the state (likely) hasnt changed yet
+                  setUsername(nameRef.current.textContent);
+                }
+              }}
+              onMouseEnter={() => {setEditHover(true)}}
+              onMouseLeave={() => {setEditHover(false)}}
             />
           </td>
         </tr>
         <tr>
           <td>[owo count] </td>
-          <td className='aboutData'>{"1328759287483000"}</td>
-          <td><TbHelp /></td>
+          <td className='aboutData'>{owoCount}</td>
+          <td style={{
+            position: "relative", 
+          }}>
+            <TbHelp 
+              style={{
+                cursor: "pointer",
+                width: "1.1rem",
+                height: "1.1rem"
+              }}
+              onMouseEnter={() => {setHelpHover(true)}}
+              onMouseLeave={() => {setHelpHover(false)}}
+            />
+            <HelpModal visible={helpHover}/>
+          </td>
         </tr>
         <tr>
           <td>[uwu count] </td>
-          <td className='aboutData'>{"2"}</td>
+          <td className='aboutData'>{uwuCount}</td>
         </tr>
         
       </table>

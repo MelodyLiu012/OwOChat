@@ -1,10 +1,19 @@
 import React, { useState, useRef } from 'react'
 import { TbSend } from "react-icons/tb"
-import { writeMessage } from '../firebase'
+import { writeMessage } from '../../firebase'
 import { MdOutlineSettingsSuggest } from 'react-icons/md'
 import owoify from 'owoify-js'
 
-const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
+const InputBar = ( {
+  username, 
+  owoSetVis, 
+  setOwoSetVis, 
+  owoLevel,
+  owoCount,
+  setOwoCount,
+  uwuCount,
+  setUwuCount
+} ) => {
   const [hoveringSend, setHoveringSend] = useState(false);
   const [hoveringSet, setHoveringSet] = useState(false);
 
@@ -22,6 +31,8 @@ const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
       borderTop: "2px solid lightpink",
     }}>
 
+
+      {/* text input */}
       <div 
         ref={inputRef}
         contentEditable={true}
@@ -40,8 +51,8 @@ const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
       ></div>
 
 
+      {/* owo level setting */}
       <div 
-        // ref={sendBtnRef}
         onMouseEnter={() => { setHoveringSet(true); }}
         onMouseLeave={ () => { setHoveringSet(false); } }
         onClick={() => { 
@@ -49,7 +60,7 @@ const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
         }}
         style={{
           height: "90%",
-          width: "9%"/*(sendBtnRef.current.clientHeight).toString() + "px"*/,
+          width: "9%",
           boxSizing: "border-box",
           display: "flex",
           alignItems: "center",
@@ -61,12 +72,23 @@ const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
       }}>
         <MdOutlineSettingsSuggest style={{width: "100%", height: "100%"}} />
       </div>
+      
+      
+      {/* send button */}
       <div 
         // ref={sendBtnRef}
         onMouseEnter={() => { setHoveringSend(true); }}
         onMouseLeave={ () => { setHoveringSend(false); } }
         onClick={() => { 
           if (inputRef.current.innerText != "") {
+            // count owo's and uwu's 
+            let owoNum = (inputRef.current.innerText.match(/owo/g) || []).length;
+            let uwuNum = (inputRef.current.innerText.match(/uwu/g) || []).length;
+            // add counts to total
+            setOwoCount(owoCount + owoNum);
+            setUwuCount(uwuCount + uwuNum);
+
+            // owoify text
             let owoifyParam = "owo";
             if (owoLevel == 0) { owoifyParam = "owo";}
             if (owoLevel == 10) { owoifyParam = "uwu"; }
@@ -74,6 +96,7 @@ const InputBar = ( {username, owoSetVis, setOwoSetVis, owoLevel} ) => {
             console.log(owoifyParam);
             const owoifiedText = owoify(inputRef.current.innerText, owoifyParam);
 
+            // send message
             writeMessage(username, owoifiedText); 
             inputRef.current.innerText = "";
           }

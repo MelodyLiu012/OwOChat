@@ -73,7 +73,7 @@ a:hover {
 
 
 
-.msgContent, .credits, .textInput  {
+.msgContent, .credits, .textInput/*, .helpParagraph*/  {
   font-family: "Comic Neue", monospace;
 }
 .msgContent {
@@ -108,6 +108,9 @@ a:hover {
   cursor: pointer;
   background: linear-gradient(to right, rgb(255, 225, 225), rgb(255, 168, 181) );
   border-radius: 5px;
+}
+.owoSlider:focus::-webkit-slider-thumb  {
+  outline: 3px solid rgb(255, 168, 181)
 }
 
 /* style for firefox */
