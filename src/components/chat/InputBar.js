@@ -73,7 +73,7 @@ const InputBar = ( {
         <MdOutlineSettingsSuggest style={{width: "100%", height: "100%"}} />
       </div>
       
-      
+
       {/* send button */}
       <div 
         // ref={sendBtnRef}
@@ -82,8 +82,8 @@ const InputBar = ( {
         onClick={() => { 
           if (inputRef.current.innerText != "") {
             // count owo's and uwu's 
-            let owoNum = (inputRef.current.innerText.match(/owo/g) || []).length;
-            let uwuNum = (inputRef.current.innerText.match(/uwu/g) || []).length;
+            let owoNum = (inputRef.current.innerText.toLowerCase().match(/owo/g) || []).length;
+            let uwuNum = (inputRef.current.innerText.toLowerCase().match(/uwu/g) || []).length;
             // add counts to total
             setOwoCount(owoCount + owoNum);
             setUwuCount(uwuCount + uwuNum);
@@ -111,7 +111,7 @@ const InputBar = ( {
           border: "0.5rem solid rgba(0,0,0,0)",
           borderRadius: "1000px",
           backgroundColor: hoveringSend ? "rgba(255, 182, 193, 0.5)" : "rgba(0,0,0,0)",
-          cursor: "pointer", // dont need "hovering" since pointer doesnt show outside of this div anyway
+          cursor: hoveringSend ? "pointer" : "default",
       }}>
         <TbSend style={{width: "100%", height: "100%"}} />
       </div>
