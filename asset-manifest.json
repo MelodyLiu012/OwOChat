@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/OwOChat/static/css/main.2bc3c163.css",
+    "main.js": "/OwOChat/static/js/main.d3d64671.js",
+    "static/js/787.07c3886e.chunk.js": "/OwOChat/static/js/787.07c3886e.chunk.js",
+    "static/media/owochat-logo.png": "/OwOChat/static/media/owochat-logo.47849d68714713f5ed9e.png",
+    "static/media/owochat-wallpaper.jpg": "/OwOChat/static/media/owochat-wallpaper.60e3fd64f97e8daa3e67.jpg",
+    "static/media/ComicNeue-Regular.ttf": "/OwOChat/static/media/ComicNeue-Regular.f6e8f457de11c548d697.ttf",
+    "static/media/ComicNeue-Bold.ttf": "/OwOChat/static/media/ComicNeue-Bold.a068c58b0b82fcd0ffe6.ttf",
+    "index.html": "/OwOChat/index.html",
+    "main.2bc3c163.css.map": "/OwOChat/static/css/main.2bc3c163.css.map",
+    "main.d3d64671.js.map": "/OwOChat/static/js/main.d3d64671.js.map",
+    "787.07c3886e.chunk.js.map": "/OwOChat/static/js/787.07c3886e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2bc3c163.css",
+    "static/js/main.d3d64671.js"
+  ]
+}
