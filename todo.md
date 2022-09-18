@@ -1,0 +1,15 @@
+# To-do
+- CLEAN UP CODE 
+  - PUT INLINE CSS IN CSS FILES 
+  - possibly convert global states to useReducer() ones
+- Let users share their owo and uwu counts
+- Multiple chatrooms
+- Whisper/DM
+- Route to DogeChat?
+- dynamic loading
+- word limit (message and username)
+- text box expand when typing
+- send images (might be bad idea)
+ - delete images from db too old if run out of space?
+- timestamps
+- add easter eggs?

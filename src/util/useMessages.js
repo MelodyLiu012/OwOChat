@@ -13,7 +13,7 @@ const JSONtoArray = (data) => {
 }
 
 const getMessages = (callback) => {  // CALLBACK HAS TO BE "setMessage()"!!!
-  return onValue(messagesRef, (snapshot) => {
+  return onValue(messagesRef, (snapshot) => { // returns unsubscribe function
     console.log("onValue");
     const data = snapshot.val();
     callback(JSONtoArray(data));

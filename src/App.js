@@ -1,7 +1,7 @@
 import './App.css';
-import Logo from "./components/Logo"
+import Logo from "./components/logo/Logo"
 import Chat from "./components/chat/Chat"
-import User from "./components/User"
+import User from "./components/user/User"
 import OwOSetModal from './components/chat/OwOSetModal';
 import { useState } from 'react';
 import { useLocalStorage } from './util/useLocalStorage';

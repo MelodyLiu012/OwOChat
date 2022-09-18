@@ -11,7 +11,7 @@ const Logo = () => {
       padding: "2% 1% 2% 1%",
     }}>
       <img 
-        src={require("../assets/owochat-logo.png")}
+        src={require("../../assets/owochat-logo.png")}
         style={{
           width: "85%",
         }}

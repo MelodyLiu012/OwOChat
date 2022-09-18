@@ -3,7 +3,7 @@ import { getDatabase, ref, set, push, onValue} from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDVjQfKrili7TrbQhWhrtStsM8By-zoTVM",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "owochat-3acf9.firebaseapp.com",
   projectId: "owochat-3acf9",
   storageBucket: "owochat-3acf9.appspot.com",
